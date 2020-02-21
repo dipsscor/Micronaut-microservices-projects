@@ -1,0 +1,20 @@
+version: "3.5"
+
+
+networks:
+ hello:
+  driver: bridge
+
+services:
+  
+ Hello-world:
+  build: ./
+  image: hello-service
+  ports:
+   - "8080:8080"
+  networks:
+   - hello
+  tty:
+    true
+  restart:
+    unless-stopped
