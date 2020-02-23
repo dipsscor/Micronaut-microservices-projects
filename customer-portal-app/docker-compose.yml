@@ -89,10 +89,15 @@ services:
     - EUREKA_HOST=Discovery-Service
     - ZIPKIN_HOST=ZipkinService
     - REDIS_HOST=Redis-Service
+    - ACCT_SERVICE=account-management-service
+    - CUST_SERVICE=customer-management-service
   tty:
     true
   restart:
     unless-stopped
+  depends_on:
+    - customer-management-service
+    - account-management-service
     
     
 networks:

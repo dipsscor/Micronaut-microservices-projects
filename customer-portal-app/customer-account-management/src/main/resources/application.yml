@@ -66,3 +66,13 @@ hystrix:
 ---
 redis:
   uri: redis://${REDIS_HOST:localhost}
+  
+  
+acctmgmt:
+  server:
+    url: http://${ACCT_SERVICE}:11001/API
+    
+custmgmt:
+  server:
+    url: http://${CUST_SERVICE}:12001/API
+        

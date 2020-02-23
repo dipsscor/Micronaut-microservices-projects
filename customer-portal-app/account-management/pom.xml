@@ -52,6 +52,7 @@
       <artifactId>micronaut-management</artifactId>
       <scope>compile</scope>
     </dependency>
+    
    <dependency>
       <groupId>io.opentracing.brave</groupId>
       <artifactId>brave-opentracing</artifactId>
