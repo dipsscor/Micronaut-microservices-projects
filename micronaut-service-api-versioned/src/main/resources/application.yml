@@ -1,6 +1,6 @@
 micronaut:
   application:
-    name: api-versioned-service
+    name: micronaut-service-api-versioned
     
     
     

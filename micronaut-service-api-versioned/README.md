@@ -1,5 +1,5 @@
 
-## API-versioned-service
+## Micronaut Service Api versioned
 The sample service showing the API versioning capability through micronaut.
  
     micronaut:

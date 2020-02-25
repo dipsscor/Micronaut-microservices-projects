@@ -17,7 +17,7 @@ gradle based micronaut federation named customer-portal-app.
 
 
 
-## Api versioned service
+## Micronaut service Api versioned
 The sample service showing the API versioning capability through micronaut.
 
 
