@@ -1,0 +1,36 @@
+micronaut:
+  application:
+    name: api-versioned-service
+    
+    
+    
+    
+    
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+        
+        
+        
+    versioning:
+      enabled: true
+      default-version: 3
+      parameter:
+        enabled: true
+        names:
+        - 'v'
+        - 'api-version'
+      header:
+        enabled: true
+        names:
+        - 'X-API-VERSION'
+        - 'Accept-Version'
+          
+        
+  server:
+    port: 11001
