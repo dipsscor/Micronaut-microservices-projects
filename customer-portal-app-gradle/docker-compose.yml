@@ -1,0 +1,110 @@
+version: '3.3'
+
+services:
+
+ Discovery-Service:
+  build: ./DiscoveryService 
+  image: discovery-service
+  ports:
+   - "8761:8761"
+  networks:
+   - cust-portal
+  tty:
+    true
+  restart:
+    unless-stopped
+        
+    
+    
+ Zipkin-Service:
+  image: openzipkin/zipkin
+  ports:
+   - "9411:9411"
+  networks:
+   - cust-portal
+  tty:
+    true
+  restart:
+    unless-stopped
+    
+    
+ Redis-Service:
+  image: redis
+  ports:
+   - "6379:6379"
+  networks:
+   - cust-portal
+  tty:
+    true
+  restart:
+    unless-stopped
+      
+    
+    
+ account-management-service:
+  build: ./account-management 
+  image: account-mgmt
+  ports:
+   - "11001:11001"
+  networks:
+   - cust-portal
+  environment:
+    - EUREKA_HOST=Discovery-Service
+    - ZIPKIN_HOST=Zipkin-Service
+    - REDIS_HOST=Redis-Service
+  tty:
+    true
+  restart:
+    unless-stopped
+  depends_on:
+    - Discovery-Service
+    
+    
+  
+ customer-management-service:
+  build: ./customer-management 
+  image: cust-mgmt
+  ports:
+   - "12001:12001"
+  networks:
+   - cust-portal
+  environment:
+    - EUREKA_HOST=Discovery-Service
+    - ZIPKIN_HOST=Zipkin-Service
+    - REDIS_HOST=Redis-Service
+  tty:
+    true
+  restart:
+    unless-stopped
+  depends_on:
+    - Discovery-Service
+    
+    
+
+    
+ customer-account-management-service:
+  build: ./customer-account-management 
+  image: cust-acct-mgmt
+  ports:
+   - "13001:13001"
+  networks:
+   - cust-portal
+  environment:
+    - EUREKA_HOST=Discovery-Service
+    - ZIPKIN_HOST=Zipkin-Service
+    - REDIS_HOST=Redis-Service
+    - ACCT_SERVICE=account-management-service
+    - CUST_SERVICE=customer-management-service
+  tty:
+    true
+  restart:
+    unless-stopped
+  depends_on:
+    - customer-management-service
+    - account-management-service
+    - Discovery-Service
+    
+    
+networks:
+  cust-portal:
+    driver: bridge
