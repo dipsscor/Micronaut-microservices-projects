@@ -1,0 +1,14 @@
+---
+micronaut:
+  application:
+    name: micronaut-service-using-consul
+
+  server:
+    port: 11001
+
+---
+consul:
+  client:
+    registration:
+      enabled: true
+    defaultZone: "${CONSUL_HOST:localhost}:${CONSUL_PORT:8500}"

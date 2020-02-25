@@ -1,0 +1,39 @@
+version: '3.3'
+
+services:
+
+ Discovery-Service:
+  image: consul
+  container_name: Discovery-Service
+  ports:
+   - "8500:8500"
+  networks:
+   - cust-portal
+  tty:
+    true
+  restart:
+    unless-stopped
+        
+      
+    
+ app:
+  build: ./ 
+  image: micronaut-service-using-consul
+  container_name: micronaut-service-using-consul
+  ports:
+   - "11001:11001"
+  networks:
+   - cust-portal
+  environment:
+    - CONSUL_HOST=Discovery-Service
+  tty:
+    true
+  restart:
+    unless-stopped    
+    
+
+    
+    
+networks:
+  cust-portal:
+    driver: bridge
