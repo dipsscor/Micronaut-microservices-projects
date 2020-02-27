@@ -1,0 +1,5 @@
+profile: function-aws
+defaultPackage: com.dipsscor
+---
+testFramework: junit
+sourceLanguage: java

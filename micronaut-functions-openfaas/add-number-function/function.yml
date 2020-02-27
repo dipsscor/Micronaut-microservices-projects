@@ -1,0 +1,8 @@
+provider:
+  name: faas
+  gateway: http://gateway:8080
+functions:
+  add-number-function:
+    lang: dockerfile
+    handler: .
+    image: add-number-function:latest

@@ -1,0 +1,6 @@
+micronaut:
+  function:
+    name: add-number-function
+    
+    
+    

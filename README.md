@@ -27,6 +27,11 @@ The sample service showing the Hashicorp Consul's Service Discovery and external
 
 
 
+## Micronaut functions on Openfaas
+This project shows sample micronaut functions that are deployed on OpenFaas . For this project OpenFaas is deployed to Dockerswarm
+
+
+
 # References
 
     https://guides.micronaut.io/creating-your-first-micronaut-app/guide/index.html
