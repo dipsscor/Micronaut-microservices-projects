@@ -1,4 +1,24 @@
-# Micronaut Microservices projects
+# Micronaut:
+
+Micronaut is a modern, JVM-based, full stack microservices framework designed for building modular, easily testable microservice applications.
+
+Micronaut is developed by the creators of the Grails framework and takes inspiration from lessons learnt over the years building real-world applications from monoliths to microservices using Spring, Spring Boot and Grails.
+
+
+Micronaut aims to avoid the downsides of frameworks like Spring, Spring Boot and Grails by providing:
+
+    Fast startup time
+
+    Reduced memory footprint
+
+    Minimal use of reflection
+
+    Minimal use of proxies
+
+    Easy unit testing
+
+
+## Micronaut Microservices projects
 This project aims to showcase the various capabilities of micronaut microservices framework through various sample projects.
 
 ## Hello World
