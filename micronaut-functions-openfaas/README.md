@@ -6,32 +6,24 @@ For this project we will be using docker swarm.
 
 # Setup:
 
-## Initiate docker swarm
-For single node /local m/c use docker swarm in single mode only.
+## Initiate OpenFAAS on Docker swarm:
+Start OpenFAAS following the documnetation of OpenFAAS repository:
 
-    docker swarm init
-
-For cluster Add nodes using join-nodes and token
-
-## Initiate OpenFaas on Docker Swarm (without authorization)
-
-    cd open-faas && ./deploy_stack.sh --no-auth
-
-OpenFaas will be available at:
-
-    http://localhost:8080/ui
+    https://github.com/dipsscor/OpenFaas-Serverless-Framework
     
     
-## Create docker image of the functions
+## Build the images:
 
-    $ cd add-number-function
-    $ docker build -t add-number-function .
+    docker build -t <function-name> .
     
-    $ cd substract-number-function
-    $ docker build -t substract-number-function .
     
-    $ cd multiply-number-function
-    $ docker build -t multiply-number-function .
+## Note:
+Since Log4j is shipped with micronaut and has a compatibility issue with JDK 11 , therefore 'Multi-Release': true has been enabled in build file.
+
+    jar {
+        manifest {
+            attributes 'Main-Class': mainClassName
+            attributes 'Multi-Release': true
 
 ## Deploy images on OpenFaas:
 
@@ -57,12 +49,7 @@ OpenFaas will be available at:
 
 ## Bring down from OpenFaas
 
-    docker stack rm func && docker secret rm basic-auth-user && docker secret rm basic-auth-password
-    
-    
-## Bring down from Docker Swarm
-
-    docker swarm leave --force  
+    https://github.com/dipsscor/OpenFaas-Serverless-Framework
     
 
 
